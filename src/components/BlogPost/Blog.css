@@ -1,0 +1,36 @@
+.blog__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.title {
+  margin-top: 3rem;
+}
+
+.title iframe {
+  width: 1300px;
+  height: 240px;
+}
+
+.overview iframe {
+  width: 1300px;
+  height: 700px;
+}
+
+.objectives iframe {
+  width: 1300px;
+  height: 770px;
+}
+
+.results iframe {
+  width: 1000px;
+  height: 700px;
+}
+
+.conclusion iframe {
+  width: 1300px;
+  height: 390px;
+}

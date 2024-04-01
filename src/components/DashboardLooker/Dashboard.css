@@ -1,0 +1,13 @@
+.iframe-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dashboard {
+    height: 100vh;
+    width: 1000px;
+  }
+  
+
+  
