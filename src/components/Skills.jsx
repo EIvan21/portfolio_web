@@ -1,0 +1,60 @@
+import { useScrollReveal } from '../hooks/useScrollReveal';
+import './Skills.css';
+
+const STACK = [
+  { label: 'Python',       group: 'prog' },
+  { label: 'SQL',          group: 'prog' },
+  { label: 'LookML',       group: 'prog' },
+  { label: 'FastAPI',      group: 'prog' },
+  { label: 'React',        group: 'prog' },
+  { label: 'JavaScript',   group: 'prog' },
+  { label: 'BigQuery',     group: 'cloud' },
+  { label: 'DataFlow',     group: 'cloud' },
+  { label: 'VertexAI',     group: 'cloud' },
+  { label: 'Cloud Storage',group: 'cloud' },
+  { label: 'Looker Studio',group: 'cloud' },
+  { label: 'PySpark',      group: 'data' },
+  { label: 'Pandas',       group: 'data' },
+  { label: 'NumPy',        group: 'data' },
+  { label: 'Scikit-learn', group: 'data' },
+  { label: 'Git',          group: 'tools' },
+  { label: 'Jupyter',      group: 'tools' },
+];
+
+const CERTS = [
+  { name: 'Associate Cloud Engineer', org: 'Google Cloud · 2025' },
+  { name: 'Generative AI Leader',     org: 'Google Cloud · 2025' },
+  { name: 'Data Engineer',            org: 'DataCamp · 2024'     },
+];
+
+export default function Skills() {
+  const stackRef = useScrollReveal();
+  const certRef  = useScrollReveal();
+
+  return (
+    <>
+      <section className="skills section fade-up" ref={stackRef}>
+        <p className="section-label">Stack & herramientas</p>
+        <div className="skills__chips">
+          {STACK.map((s) => (
+            <span key={s.label} className={`skill-chip skill-chip--${s.group}`}>
+              {s.label}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="certs section fade-up" ref={certRef}>
+        <p className="section-label">Certificaciones</p>
+        <div className="certs__list">
+          {CERTS.map((c) => (
+            <div key={c.name} className="cert-card">
+              <p className="cert-card__name">{c.name}</p>
+              <p className="cert-card__org">{c.org}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}

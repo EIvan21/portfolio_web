@@ -1,0 +1,47 @@
+.skills__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-chip {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 13px;
+  border: 0.5px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-muted);
+  transition: border-color 0.15s, color 0.15s;
+  cursor: default;
+}
+
+.skill-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+/* Certifications */
+.certs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cert-card {
+  padding: 10px 16px;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.cert-card__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.cert-card__org {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
