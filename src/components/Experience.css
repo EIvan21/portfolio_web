@@ -1,0 +1,96 @@
+.exp__timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp__item {
+  position: relative;
+  padding-left: 1.75rem;
+  padding-bottom: 2rem;
+}
+
+/* Vertical connector line */
+.exp__item::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.exp__item:last-child {
+  padding-bottom: 0;
+}
+
+.exp__item:last-child::before {
+  display: none;
+}
+
+.exp__marker {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.exp__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.exp__role {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.exp__badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 100px;
+  background: var(--accent-light);
+  color: var(--accent-deep);
+}
+
+.exp__meta {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--accent);
+  margin: 5px 0 12px;
+}
+
+.exp__bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.exp__bullets li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.exp__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}

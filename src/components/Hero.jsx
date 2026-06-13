@@ -57,30 +57,30 @@ export default function Hero() {
       </div>
 
       <p className="hero__bio">
-        Data &amp; Cloud Engineer especializado en BigQuery, PySpark y LookML.
-        Optimizo pipelines de datos, automatizo flujos y construyo dashboards
-        analíticos de alto impacto en Google Cloud.
+        Data &amp; Cloud Engineer specialized in BigQuery, PySpark and LookML.
+        I optimize data pipelines, automate workflows and build high-impact
+        analytics dashboards on Google Cloud.
       </p>
 
       <div className="hero__actions">
-        <a href="#projects" className="btn-primary">Ver proyectos →</a>
+        <a href="#projects" className="btn-primary">View projects →</a>
         <a href="/Edher_Ivan_CV.pdf" download className="btn-outline">
-          Descargar CV
+          Download CV
         </a>
       </div>
 
       <div className="hero__stats">
         <div className="hero__stat">
-          <span className="hero__stat-num">3+</span>
-          <span className="hero__stat-label">Años de exp.</span>
+          <span className="hero__stat-num">5+</span>
+          <span className="hero__stat-label">Years experience</span>
         </div>
         <div className="hero__stat">
-          <span className="hero__stat-num">400+</span>
-          <span className="hero__stat-label">Casos resueltos</span>
+          <span className="hero__stat-num">30+</span>
+          <span className="hero__stat-label">Open-source blocks</span>
         </div>
         <div className="hero__stat">
-          <span className="hero__stat-num">40%</span>
-          <span className="hero__stat-label">Reducción tiempo</span>
+          <span className="hero__stat-num">45</span>
+          <span className="hero__stat-label">Merged PRs</span>
         </div>
       </div>
     </section>

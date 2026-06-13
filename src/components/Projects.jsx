@@ -5,29 +5,29 @@ const PROJECTS = [
   {
     tag: 'LookML',
     name: 'Agent Analytics Block',
-    desc: 'Bloque de Looker para monitorear, depurar y optimizar agentes de IA generativa sobre BigQuery Agent Analytics. Arquitectura con Native Derived Tables, Liquid Templating y drilling visual avanzado.',
+    desc: 'Looker block to monitor, debug and optimize generative AI agents on top of BigQuery Agent Analytics. Built with Native Derived Tables, Liquid templating and advanced visual drilling.',
     url: 'https://github.com/looker-open-source/agent-analytics-block',
     author: true,
   },
   {
     tag: 'LookML',
     name: 'GA Four Block',
-    desc: 'Bloque de Looker para Google Analytics 4: sessionización incremental en BigQuery, modelos BQML de propensión y dashboards de adquisición, comportamiento y cohortes.',
+    desc: 'Looker block for Google Analytics 4: incremental sessionization in BigQuery, BQML propensity models and dashboards for acquisition, behavior and cohorts.',
     url: 'https://github.com/looker-open-source/ga_four_block',
     author: false,
   },
   {
     tag: 'LookML',
     name: 'AlloyDB Observability',
-    desc: 'Suite de observabilidad operacional para AlloyDB: monitoreo de salud, rendimiento, actividad en tiempo real y KPIs de PostgreSQL con arquitectura de refinamiento de dos capas.',
+    desc: 'Operational observability suite for AlloyDB: health monitoring, performance, real-time activity and PostgreSQL KPIs with a two-layer refinement architecture.',
     url: 'https://github.com/looker-open-source/alloydb-observability',
     author: false,
   },
   {
-    tag: 'JavaScript',
-    name: 'Looker Skills',
-    desc: 'Repositorio de skills LookML para asistir a agentes de IA (Gemini, Claude Code, Cursor) en escribir código estandarizado. Incluye guías para Models, Explores, Views y Fields.',
-    url: 'https://github.com/looker-open-source/looker-skills',
+    tag: 'LookML',
+    name: 'Google Trends Block',
+    desc: 'Looker block on top of the Google Trends public dataset in BigQuery to explore search interest trends and seasonality.',
+    url: 'https://github.com/looker-open-source/google-trends-block',
     author: false,
   },
 ];
@@ -39,17 +39,17 @@ export default function Projects() {
     <section className="projects section fade-up" ref={ref} id="projects">
       <div className="projects__header">
         <div>
-          <p className="section-label">Proyectos</p>
+          <p className="section-label">Projects</p>
           <h2 className="projects__title">Looker Open Source</h2>
-          <p className="projects__sub">github.com/looker-open-source</p>
+          <p className="projects__sub">30+ blocks · github.com/looker-open-source</p>
         </div>
         <a
-          href="https://github.com/EIvan21"
+          href="https://github.com/heyedher"
           target="_blank"
           rel="noreferrer"
           className="projects__profile-link"
         >
-          Ver perfil →
+          View profile →
         </a>
       </div>
 
@@ -65,12 +65,12 @@ export default function Projects() {
             <div className="project-card__top">
               <span className="project-card__tag">{p.tag}</span>
               {p.author && (
-                <span className="project-card__badge">Autor principal</span>
+                <span className="project-card__badge">Lead author</span>
               )}
             </div>
             <p className="project-card__name">{p.name}</p>
             <p className="project-card__desc">{p.desc}</p>
-            <p className="project-card__link">Ver repositorio →</p>
+            <p className="project-card__link">View repository →</p>
           </a>
         ))}
       </div>

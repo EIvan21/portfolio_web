@@ -22,26 +22,39 @@
 
 /* Certifications */
 .certs__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
 }
 
 .cert-card {
-  padding: 10px 16px;
+  padding: 1.1rem 1.2rem;
   border: 0.5px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.cert-card:hover {
+  border-color: var(--accent);
 }
 
 .cert-card__name {
-  font-size: 13px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
   color: var(--text);
 }
 
 .cert-card__org {
-  font-size: 11px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--accent);
+  margin: 3px 0 9px;
+}
+
+.cert-card__desc {
+  font-size: 12.5px;
   color: var(--text-muted);
-  margin-top: 2px;
+  line-height: 1.55;
 }

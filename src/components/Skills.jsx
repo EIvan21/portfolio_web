@@ -22,9 +22,21 @@ const STACK = [
 ];
 
 const CERTS = [
-  { name: 'Associate Cloud Engineer', org: 'Google Cloud · 2025' },
-  { name: 'Generative AI Leader',     org: 'Google Cloud · 2025' },
-  { name: 'Data Engineer',            org: 'DataCamp · 2024'     },
+  {
+    name: 'Associate Cloud Engineer',
+    org: 'Google Cloud · 2025',
+    desc: 'Established and configured foundational Google Cloud environments — planning, deploying and securing a variety of cloud solutions.',
+  },
+  {
+    name: 'Generative AI Leader',
+    org: 'Google Cloud · 2025',
+    desc: "Applied business-level knowledge of Google Cloud's Gen AI offerings to identify transformation opportunities and guide responsible AI adoption.",
+  },
+  {
+    name: 'Data Engineer',
+    org: 'DataCamp · 2024',
+    desc: 'Proven expertise in SQL and data management — data cleaning and transformation, assessed through real-world engineering challenges.',
+  },
 ];
 
 export default function Skills() {
@@ -34,7 +46,7 @@ export default function Skills() {
   return (
     <>
       <section className="skills section fade-up" ref={stackRef}>
-        <p className="section-label">Stack & herramientas</p>
+        <p className="section-label">Stack & tools</p>
         <div className="skills__chips">
           {STACK.map((s) => (
             <span key={s.label} className={`skill-chip skill-chip--${s.group}`}>
@@ -45,12 +57,13 @@ export default function Skills() {
       </section>
 
       <section className="certs section fade-up" ref={certRef}>
-        <p className="section-label">Certificaciones</p>
+        <p className="section-label">Certifications</p>
         <div className="certs__list">
           {CERTS.map((c) => (
             <div key={c.name} className="cert-card">
               <p className="cert-card__name">{c.name}</p>
               <p className="cert-card__org">{c.org}</p>
+              <p className="cert-card__desc">{c.desc}</p>
             </div>
           ))}
         </div>
