@@ -5,19 +5,31 @@
 }
 
 .skill-chip {
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
   font-weight: 500;
-  padding: 5px 13px;
+  padding: 5px 12px;
   border: 0.5px solid var(--border);
   border-radius: 100px;
   color: var(--text-muted);
-  transition: border-color 0.15s, color 0.15s;
   cursor: default;
+  opacity: 0;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.skills.visible .skill-chip {
+  animation: chipIn 0.45s ease both;
 }
 
 .skill-chip:hover {
   border-color: var(--accent);
   color: var(--accent-deep);
+  background: var(--accent-light);
 }
 
 /* Certifications */
@@ -32,11 +44,34 @@
   border: 0.5px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
-  transition: border-color 0.2s;
+  opacity: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+@keyframes certIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.certs.visible .cert-card {
+  animation: certIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.certs.visible .cert-card:nth-child(1) { animation-delay: 0.06s; }
+.certs.visible .cert-card:nth-child(2) { animation-delay: 0.15s; }
+.certs.visible .cert-card:nth-child(3) { animation-delay: 0.24s; }
 
 .cert-card:hover {
   border-color: var(--accent);
+  box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.35);
+}
+
+/* AI certification — violet accent */
+.cert-card--ai {
+  box-shadow: inset 3px 0 0 var(--ai);
+}
+.cert-card--ai:hover {
+  border-color: var(--ai);
+  box-shadow: inset 3px 0 0 var(--ai), 0 12px 28px -12px var(--ai-light);
 }
 
 .cert-card__name {
@@ -47,14 +82,40 @@
 }
 
 .cert-card__org {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 4px 0 9px;
+}
+
+.cert-card__org-name {
   font-size: 11.5px;
   font-weight: 500;
   color: var(--accent);
-  margin: 3px 0 9px;
+}
+
+.cert-card--ai .cert-card__org-name {
+  color: var(--ai-deep);
+}
+
+.cert-card__year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 .cert-card__desc {
   font-size: 12.5px;
   color: var(--text-muted);
   line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-chip,
+  .skills.visible .skill-chip,
+  .cert-card,
+  .certs.visible .cert-card {
+    opacity: 1;
+    animation: none;
+  }
 }

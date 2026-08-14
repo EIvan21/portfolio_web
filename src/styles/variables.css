@@ -18,6 +18,8 @@
   --text:         #16181d;
   --text-muted:   #5f6672;
   --glow-accent:  none;
+  --danger:       #b91c1c;
+  --danger-bg:    #fdecec;
   --radius:       12px;
   --radius-sm:    8px;
   --max-w:        860px;
@@ -37,6 +39,8 @@
   --text:         #e6edf3;
   --text-muted:   #9aa4b2;
   --glow-accent:  0 0 8px var(--accent);
+  --danger:       #fca5a5;
+  --danger-bg:    rgba(248, 113, 113, 0.14);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

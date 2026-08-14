@@ -24,17 +24,18 @@ const STACK = [
 const CERTS = [
   {
     name: 'Associate Cloud Engineer',
-    org: 'Google Cloud · 2025',
+    org: 'Google Cloud · 2026',
     desc: 'Established and configured foundational Google Cloud environments — planning, deploying and securing a variety of cloud solutions.',
   },
   {
     name: 'Generative AI Leader',
     org: 'Google Cloud · 2025',
+    ai: true,
     desc: "Applied business-level knowledge of Google Cloud's Gen AI offerings to identify transformation opportunities and guide responsible AI adoption.",
   },
   {
     name: 'Data Engineer',
-    org: 'DataCamp · 2024',
+    org: 'DataCamp · 2025',
     desc: 'Proven expertise in SQL and data management — data cleaning and transformation, assessed through real-world engineering challenges.',
   },
 ];
@@ -48,8 +49,12 @@ export default function Skills() {
       <section className="skills section fade-up" ref={stackRef}>
         <p className="section-label">Stack & tools</p>
         <div className="skills__chips">
-          {STACK.map((s) => (
-            <span key={s.label} className={`skill-chip skill-chip--${s.group}`}>
+          {STACK.map((s, i) => (
+            <span
+              key={s.label}
+              className={`skill-chip skill-chip--${s.group}`}
+              style={{ animationDelay: `${i * 0.03}s` }}
+            >
               {s.label}
             </span>
           ))}
@@ -59,13 +64,22 @@ export default function Skills() {
       <section className="certs section fade-up" ref={certRef}>
         <p className="section-label">Certifications</p>
         <div className="certs__list">
-          {CERTS.map((c) => (
-            <div key={c.name} className="cert-card">
-              <p className="cert-card__name">{c.name}</p>
-              <p className="cert-card__org">{c.org}</p>
-              <p className="cert-card__desc">{c.desc}</p>
-            </div>
-          ))}
+          {CERTS.map((c) => {
+            const [org, year] = c.org.split('·').map((x) => x.trim());
+            return (
+              <div
+                key={c.name}
+                className={`cert-card ${c.ai ? 'cert-card--ai' : ''}`}
+              >
+                <p className="cert-card__name">{c.name}</p>
+                <p className="cert-card__org">
+                  <span className="cert-card__org-name">{org}</span>
+                  {year && <span className="cert-card__year">{year}</span>}
+                </p>
+                <p className="cert-card__desc">{c.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     </>

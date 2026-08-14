@@ -53,6 +53,12 @@
 .contact__social:hover {
   border-color: var(--accent);
   color: var(--accent-deep);
+  background: var(--accent-light);
+}
+
+.contact__social:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .contact__form {
@@ -88,6 +94,7 @@
 .contact__form textarea:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
 }
 
 .contact__form .btn-primary {
@@ -100,8 +107,8 @@
   border-radius: var(--radius-sm);
 }
 
-.contact__msg--ok  { background: #e6f9f1; color: var(--accent-deep); }
-.contact__msg--err { background: #fef2f2; color: #b91c1c; }
+.contact__msg--ok  { background: var(--accent-light); color: var(--accent-deep); }
+.contact__msg--err { background: var(--danger-bg);    color: var(--danger); }
 
 @media (max-width: 500px) {
   .contact__row { grid-template-columns: 1fr; }

@@ -55,10 +55,10 @@ export default function Contact() {
 
       <form className="contact__form" ref={formEl} onSubmit={handleSubmit}>
         <div className="contact__row">
-          <input name="name"  type="text"  placeholder="Your name"  required />
-          <input name="email" type="email" placeholder="Your email" required />
+          <input name="name"  type="text"  placeholder="Your name"  aria-label="Your name"  required />
+          <input name="email" type="email" placeholder="Your email" aria-label="Your email" required />
         </div>
-        <textarea name="message" rows="5" placeholder="How can I help you?" required />
+        <textarea name="message" rows="5" placeholder="How can I help you?" aria-label="Your message" required />
         <button type="submit" className="btn-primary" disabled={status === 'sending'}>
           {status === 'sending' ? 'Sending…' : 'Send message'}
         </button>
