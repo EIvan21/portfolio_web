@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Projects.css';
+
+const VISIBLE = 4;
 
 const PROJECTS = [
   {
@@ -50,6 +53,10 @@ const PROJECTS = [
 
 export default function Projects() {
   const ref = useScrollReveal();
+  const [expanded, setExpanded] = useState(false);
+
+  const shown = expanded ? PROJECTS : PROJECTS.slice(0, VISIBLE);
+  const hiddenCount = PROJECTS.length - VISIBLE;
 
   return (
     <section className="projects section fade-up" ref={ref} id="projects">
@@ -70,7 +77,7 @@ export default function Projects() {
       </div>
 
       <div className="projects__grid">
-        {PROJECTS.map((p) => (
+        {shown.map((p) => (
           <a
             key={p.name}
             href={p.url}
@@ -90,6 +97,18 @@ export default function Projects() {
           </a>
         ))}
       </div>
+
+      {hiddenCount > 0 && (
+        <div className="projects__more">
+          <button
+            type="button"
+            className="projects__more-btn"
+            onClick={() => setExpanded((e) => !e)}
+          >
+            {expanded ? 'Show less' : 'Show more'}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

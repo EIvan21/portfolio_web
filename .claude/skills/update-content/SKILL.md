@@ -10,6 +10,22 @@ To update a section, edit that array — no JSX changes needed. After editing,
 **always verify locally** (`npm start`, user confirms at localhost:3000), then
 deploy with `/deploy`.
 
+## Visual / design changes
+
+For anything beyond swapping content — new UI, restyling, layout, color, type, or
+a design audit — first load the **`frontend-design`** skill (from the
+`frontend-design` plugin) and follow its guidance so changes stay distinctive and
+non-templated. Design decisions already made for this site, keep them consistent:
+
+- Accent green `--accent` (#1D9E75) for the core brand; violet `--ai` (#7c5cff)
+  reserved for AI-related items (AI project cards, the LookML pipeline node).
+- Fonts: `--font-display` (Space Grotesk) for headings, `--font-body` (DM Sans)
+  for prose, `--font-mono` (JetBrains Mono) for labels/metrics/code-like accents.
+- Signature element: the animated data pipeline in the Hero
+  (`src/components/Hero.jsx`).
+- Quality floor: respect `prefers-reduced-motion`, keep visible `:focus-visible`
+  states, stay responsive to mobile.
+
 ## Section map
 
 | Section (UI label)        | File                              | Array   |

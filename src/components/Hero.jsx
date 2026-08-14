@@ -8,6 +8,18 @@ const ROLES = [
   'AI Analytics Developer',
 ];
 
+const PIPELINE = [
+  { name: 'sources',   meta: 'CSV · API · SQL' },
+  { name: 'BigQuery',  meta: 'warehouse' },
+  { name: 'AI agents', meta: 'LLM codegen', ai: true },
+  { name: 'LookML',    meta: 'semantic model' },
+  { name: 'Looker',    meta: 'dashboards' },
+];
+
+const prefersReduced = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 export default function Hero() {
   const [text, setText]         = useState('');
   const [roleIdx, setRoleIdx]   = useState(0);
@@ -16,6 +28,8 @@ export default function Hero() {
   const [paused, setPaused]     = useState(false);
 
   useEffect(() => {
+    // Static role for users who prefer reduced motion — no typing loop.
+    if (prefersReduced()) { setText(ROLES[0]); return; }
     if (paused) return;
     const role    = ROLES[roleIdx];
     const speed   = deleting ? 36 : 68;
@@ -44,44 +58,71 @@ export default function Hero() {
 
   return (
     <section className="hero section" id="about">
-      <p className="section-label">Google Cloud Engineer @ GlobalLogic</p>
+      <div className="hero__grid">
+        <div className="hero__main">
+          <p className="hero__eyebrow">Google Cloud Engineer @ GlobalLogic</p>
 
-      <h1 className="hero__name">
-        <span className="hero__word hero__word--1">Edher</span>{' '}
-        <span className="hero__word hero__word--2">Ivan</span>
-      </h1>
+          <h1 className="hero__name">
+            <span className="hero__word hero__word--1">Edher</span>{' '}
+            <span className="hero__word hero__word--2">Ivan</span>
+          </h1>
 
-      <div className="hero__role">
-        <span>{text}</span>
-        <span className="hero__cursor" aria-hidden="true">|</span>
-      </div>
+          <div className="hero__role">
+            <span className="hero__caret" aria-hidden="true">&gt;</span>
+            <span>{text}</span>
+            <span className="hero__cursor" aria-hidden="true" />
+          </div>
 
-      <p className="hero__bio">
-        Data &amp; Cloud Engineer specialized in BigQuery, PySpark and LookML.
-        I optimize data pipelines, automate workflows and build high-impact
-        analytics dashboards on Google Cloud.
-      </p>
+          <p className="hero__bio">
+            Data &amp; Cloud Engineer specialized in BigQuery, PySpark and LookML.
+            I optimize data pipelines, automate workflows and build high-impact
+            analytics dashboards on Google Cloud.
+          </p>
 
-      <div className="hero__actions">
-        <a href="#projects" className="btn-primary">View projects →</a>
-        <a href="/Edher_Ivan_CV.pdf" download className="btn-outline">
-          Download CV
-        </a>
-      </div>
+          <div className="hero__actions">
+            <a href="#projects" className="btn-primary">View projects →</a>
+            <a href="/Edher_Ivan_CV.pdf" download className="btn-outline">
+              Download CV
+            </a>
+          </div>
 
-      <div className="hero__stats">
-        <div className="hero__stat">
-          <span className="hero__stat-num">5+</span>
-          <span className="hero__stat-label">Years experience</span>
+          <div className="hero__stats">
+            <div className="hero__stat">
+              <span className="hero__stat-num">5+</span>
+              <span className="hero__stat-label">years experience</span>
+            </div>
+            <div className="hero__stat">
+              <span className="hero__stat-num">30+</span>
+              <span className="hero__stat-label">open-source blocks</span>
+            </div>
+            <div className="hero__stat">
+              <span className="hero__stat-num">45</span>
+              <span className="hero__stat-label">merged PRs</span>
+            </div>
+          </div>
         </div>
-        <div className="hero__stat">
-          <span className="hero__stat-num">30+</span>
-          <span className="hero__stat-label">Open-source blocks</span>
-        </div>
-        <div className="hero__stat">
-          <span className="hero__stat-num">45</span>
-          <span className="hero__stat-label">Merged PRs</span>
-        </div>
+
+        <aside className="hero__aside" aria-hidden="true">
+          <div className="pipeline">
+            <div className="pipeline__line">
+              <span className="pipeline__dot pipeline__dot--1" />
+              <span className="pipeline__dot pipeline__dot--2" />
+              <span className="pipeline__dot pipeline__dot--3" />
+            </div>
+            {PIPELINE.map((n) => (
+              <div
+                key={n.name}
+                className={`pipeline__node ${n.ai ? 'pipeline__node--ai' : ''}`}
+              >
+                <span className="pipeline__marker" />
+                <div className="pipeline__text">
+                  <span className="pipeline__name">{n.name}</span>
+                  <span className="pipeline__meta">{n.meta}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </aside>
       </div>
     </section>
   );

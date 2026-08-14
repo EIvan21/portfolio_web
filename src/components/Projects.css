@@ -46,32 +46,63 @@
   border-radius: var(--radius);
   padding: 1.2rem;
   text-decoration: none;
-  transition: border-color 0.2s, transform 0.2s;
+  opacity: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Staggered entrance, echoing the hero rhythm */
+@keyframes projIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+.projects.visible .project-card {
+  animation: projIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.projects.visible .project-card:nth-child(1) { animation-delay: 0.06s; }
+.projects.visible .project-card:nth-child(2) { animation-delay: 0.15s; }
+.projects.visible .project-card:nth-child(3) { animation-delay: 0.24s; }
+.projects.visible .project-card:nth-child(4) { animation-delay: 0.33s; }
+/* Cards 5–6 only appear on "Show more" — keep their reveal snappy */
+.projects.visible .project-card:nth-child(5) { animation-delay: 0.05s; }
+.projects.visible .project-card:nth-child(6) { animation-delay: 0.13s; }
 
 .project-card:hover {
   border-color: var(--accent);
-  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.35);
 }
 
 .project-card--featured {
   border: 2px solid var(--accent);
 }
 
-.project-card--featured:hover {
-  transform: translateY(-3px);
-}
-
-/* AI skill cards — distinct violet outline */
+/* AI skill cards — distinct violet outline + flowing accent line */
 .project-card--ai {
+  position: relative;
+  overflow: hidden;
   border: 2px solid var(--ai);
   box-shadow: 0 0 0 1px var(--ai-light), 0 6px 20px -8px var(--ai-light);
 }
 
 .project-card--ai:hover {
   border-color: var(--ai);
-  box-shadow: 0 0 0 1px var(--ai), 0 10px 26px -8px var(--ai-light);
-  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px var(--ai), 0 12px 28px -12px var(--ai-light);
+}
+
+.project-card--ai::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ai), transparent);
+  animation: aiFlow 3s linear infinite;
+}
+
+@keyframes aiFlow {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(340%); }
 }
 
 .project-card__tag--ai {
@@ -130,6 +161,46 @@
   margin-top: 12px;
 }
 
+/* Show more / less */
+.projects__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.projects__more-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0.5px solid var(--border);
+  border-radius: 100px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.projects__more-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.projects__more-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 @media (max-width: 600px) {
   .projects__grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .projects.visible .project-card {
+    opacity: 1;
+    animation: none;
+  }
+  .project-card--ai::after { display: none; }
 }

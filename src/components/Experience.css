@@ -1,42 +1,91 @@
 .exp__timeline {
+  position: relative;
   display: flex;
   flex-direction: column;
+  gap: 14px;
 }
 
-.exp__item {
-  position: relative;
-  padding-left: 1.75rem;
-  padding-bottom: 2rem;
-}
-
-/* Vertical connector line */
-.exp__item::before {
-  content: '';
+/* Career pipeline spine — dots flowing down, echoing the hero */
+.exp__flow {
   position: absolute;
-  left: 5px;
-  top: 6px;
-  bottom: 0;
-  width: 1px;
+  left: 95px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
   background: var(--border);
 }
 
-.exp__item:last-child {
-  padding-bottom: 0;
-}
-
-.exp__item:last-child::before {
-  display: none;
-}
-
-.exp__marker {
+.exp__flow-dot {
   position: absolute;
-  left: 0;
-  top: 4px;
-  width: 11px;
-  height: 11px;
+  left: -2px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--accent);
+  background: var(--accent);
+  box-shadow: var(--glow-accent);
+  animation: expFlow 3s linear infinite;
+}
+.exp__flow-dot--2 { animation-delay: 1s; }
+.exp__flow-dot--3 { animation-delay: 2s; }
+
+@keyframes expFlow {
+  0%   { top: 0;    opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.exp__item {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Staggered reveal once the section scrolls into view */
+.experience.visible .exp__item { opacity: 1; transform: none; }
+.experience.visible .exp__item:nth-child(1) { transition-delay: 0.05s; }
+.experience.visible .exp__item:nth-child(2) { transition-delay: 0.16s; }
+.experience.visible .exp__item:nth-child(3) { transition-delay: 0.27s; }
+
+/* Left rail — chronological record, monospace */
+.exp__rail {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: right;
+  padding-top: 20px;
+  line-height: 1.5;
+}
+
+.exp__rail-from {
+  display: block;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.exp__rail-to {
+  display: block;
+  color: var(--text-muted);
+}
+
+/* Card panel */
+.exp__card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exp__card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.exp__item--current .exp__card {
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 .exp__head {
@@ -54,16 +103,35 @@
 }
 
 .exp__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
   font-size: 10px;
-  font-weight: 600;
-  padding: 2px 9px;
+  font-weight: 500;
+  padding: 3px 10px;
   border-radius: 100px;
   background: var(--accent-light);
   color: var(--accent-deep);
 }
 
-.exp__meta {
-  font-size: 12.5px;
+.exp__badge::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: var(--glow-accent);
+  animation: exp-pulse 2s ease-in-out infinite;
+}
+
+@keyframes exp-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+
+.exp__company {
+  font-size: 13px;
   font-weight: 500;
   color: var(--accent);
   margin: 5px 0 12px;
@@ -93,4 +161,57 @@
   height: 5px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+/* Highlighted metrics */
+.exp__hi {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Stack tags */
+.exp__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.exp__tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+@media (max-width: 640px) {
+  .exp__flow { display: none; }
+  .exp__item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .exp__rail {
+    text-align: left;
+    padding-top: 0;
+    display: flex;
+    gap: 8px;
+  }
+  .exp__rail-to::before {
+    content: "—";
+    margin-right: 8px;
+    color: var(--text-muted);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exp__badge::before { animation: none; }
+  .exp__flow-dot { animation: none; display: none; }
+  .exp__item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

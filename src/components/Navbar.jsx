@@ -12,7 +12,8 @@ const LINKS = [
 function getInitialTheme() {
   const saved = localStorage.getItem('theme');
   if (saved) return saved;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  // Dark by default; a saved choice from the toggle always wins.
+  return 'dark';
 }
 
 export default function Navbar() {

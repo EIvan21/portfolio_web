@@ -6,6 +6,7 @@ const EDUCATION = [
     degree: 'MSc in Applied Artificial Intelligence',
     school: 'Tecnológico de Monterrey',
     period: 'In progress',
+    ai: true,
     note: 'Building advanced competencies in applied AI and emerging technologies to drive innovation and lead strategic organizational transformation.',
   },
   {
@@ -31,10 +32,17 @@ export default function Education() {
 
       <div className="edu__list">
         {EDUCATION.map((e) => (
-          <article className="edu__card" key={e.degree}>
+          <article
+            className={`edu__card ${e.ai ? 'edu__card--ai' : ''}`}
+            key={e.degree}
+          >
             <div className="edu__head">
               <h3 className="edu__degree">{e.degree}</h3>
-              <span className="edu__period">{e.period}</span>
+              {e.period === 'In progress' ? (
+                <span className="edu__badge">In progress</span>
+              ) : (
+                <span className="edu__period">{e.period}</span>
+              )}
             </div>
             <p className="edu__school">{e.school}</p>
             <p className="edu__note">{e.note}</p>
