@@ -3,6 +3,13 @@
 Personal single-page portfolio (Create React App, React 18). Deployed as static
 files to Hostinger shared hosting. Domain: **edherivan.com**.
 
+## Working style
+
+When a task splits into independent pieces (broad searches, parallel edits,
+research), use subagents to run them in parallel and keep the main context clean.
+Delegate large fan-out / exploration work so tool output doesn't clutter the main
+thread; reserve the main context for decisions and synthesis.
+
 ## Run locally
 
 ```bash
@@ -21,6 +28,10 @@ npm start        # http://localhost:3000, hot reload
   EmailJS dashboard (should include `edherivan.com`).
 
 ## Deploy
+
+**Rule: always verify changes locally before deploying.** Run `npm start`, have
+the user confirm the change looks right at `http://localhost:3000`, and only then
+build and deploy to production. Never deploy an unreviewed change.
 
 Use the **`/deploy`** skill, or follow these steps manually:
 

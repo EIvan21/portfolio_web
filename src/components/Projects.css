@@ -62,6 +62,27 @@
   transform: translateY(-3px);
 }
 
+/* AI skill cards — distinct violet outline */
+.project-card--ai {
+  border: 2px solid var(--ai);
+  box-shadow: 0 0 0 1px var(--ai-light), 0 6px 20px -8px var(--ai-light);
+}
+
+.project-card--ai:hover {
+  border-color: var(--ai);
+  box-shadow: 0 0 0 1px var(--ai), 0 10px 26px -8px var(--ai-light);
+  transform: translateY(-3px);
+}
+
+.project-card__tag--ai {
+  background: var(--ai-light);
+  color: var(--ai-deep);
+}
+
+.project-card__badge--ai {
+  background: var(--ai);
+}
+
 .project-card__top {
   display: flex;
   align-items: center;

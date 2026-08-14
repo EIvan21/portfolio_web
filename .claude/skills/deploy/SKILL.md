@@ -10,6 +10,10 @@ hosting) using the Hostinger MCP. Follow these steps in order.
 
 ## Preconditions
 
+- **Always verify locally first.** Before building/deploying, make sure the user
+  has reviewed the change at `http://localhost:3000` (start `npm start` if it is
+  not running) and has confirmed it looks right. Do not deploy an unreviewed
+  change — ask for confirmation first.
 - The Hostinger MCP (`hostinger-hosting`) must be connected. If its tools are not
   available, tell the user to run:
   `claude mcp add hostinger-hosting --scope user --env HOSTINGER_API_TOKEN=<token> -- npx.cmd --package=hostinger-api-mcp@latest hostinger-hosting-mcp`

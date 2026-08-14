@@ -3,6 +3,22 @@ import './Projects.css';
 
 const PROJECTS = [
   {
+    tag: 'AI',
+    name: 'Looker Performance Optimizer',
+    desc: 'AI agent skill that helps developers generate and refactor LookML for performance — producing faster, higher-quality code and surfacing optimization opportunities.',
+    url: 'https://github.com/looker-open-source/looker-skills/tree/main/skills/looker-performance-optimizer',
+    author: true,
+    ai: true,
+  },
+  {
+    tag: 'AI',
+    name: 'Looker Architect',
+    desc: 'AI agent skill that helps developers design and scaffold LookML projects, generating clean, well-structured and high-quality code faster.',
+    url: 'https://github.com/looker-open-source/looker-skills/tree/main/skills/looker-architect',
+    author: true,
+    ai: true,
+  },
+  {
     tag: 'LookML',
     name: 'Agent Analytics Block',
     desc: 'Looker block to monitor, debug and optimize generative AI agents on top of BigQuery Agent Analytics. Built with Native Derived Tables, Liquid templating and advanced visual drilling.',
@@ -60,12 +76,12 @@ export default function Projects() {
             href={p.url}
             target="_blank"
             rel="noreferrer"
-            className={`project-card ${p.author ? 'project-card--featured' : ''}`}
+            className={`project-card ${p.ai ? 'project-card--ai' : p.author ? 'project-card--featured' : ''}`}
           >
             <div className="project-card__top">
-              <span className="project-card__tag">{p.tag}</span>
+              <span className={`project-card__tag ${p.ai ? 'project-card__tag--ai' : ''}`}>{p.tag}</span>
               {p.author && (
-                <span className="project-card__badge">Lead author</span>
+                <span className={`project-card__badge ${p.ai ? 'project-card__badge--ai' : ''}`}>Lead author</span>
               )}
             </div>
             <p className="project-card__name">{p.name}</p>

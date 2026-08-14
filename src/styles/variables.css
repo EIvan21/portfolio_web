@@ -4,6 +4,9 @@
   --accent:       #1D9E75;
   --accent-deep:  #085041;
   --accent-light: rgba(29, 158, 117, 0.1);
+  --ai:           #7c5cff;
+  --ai-deep:      #4c34c7;
+  --ai-light:     rgba(124, 92, 255, 0.1);
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
   --bg:           #ffffff;
@@ -21,6 +24,9 @@
 :root[data-theme="dark"] {
   --accent-deep:  #4fd1a5;
   --accent-light: rgba(29, 158, 117, 0.18);
+  --ai:           #9b83ff;
+  --ai-deep:      #c4b5ff;
+  --ai-light:     rgba(124, 92, 255, 0.22);
   --bg:           #0d1117;
   --surface:      #161b22;
   --input-bg:     #0d1117;

@@ -8,10 +8,10 @@ const JOBS = [
     period: 'Aug 2024 — Present',
     current: true,
     bullets: [
-      'Lead the development of solutions to enhance marketing campaign performance using Google Cloud tools and integrating Data Transfer processes in BigQuery.',
-      'Designed a methodology to build and maintain projects with LookML, Python and BigQuery, reducing development time by 30%.',
-      'Built a Python and BigQuery-based method to generate synthetic data, accelerating dashboard development and reducing data creation time by 40%.',
-      'Lead customer meetings to define key metrics, drill-downs, visualizations and communication channels for marketing dashboards.',
+      'Engineered custom AI integrations and prompt frameworks for leading LLM agents (Gemini, Claude Code, Codex, Cursor), automating LookML code generation to accelerate development workflows and deploy advanced dashboard navigation features.',
+      'Developed and implemented a methodology for building and maintaining projects using LookML, Python and BigQuery, reducing development time by 30%.',
+      'Developed a Python and BigQuery-based methodology to generate synthetic data, enhancing dashboard development and customization while reducing data creation time by 40%.',
+      'Led customer meetings to define key metrics, drill-downs, visualizations and communication channels for marketing dashboards.',
     ],
   },
   {
