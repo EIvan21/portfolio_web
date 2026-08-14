@@ -11,7 +11,7 @@ const SOCIALS = [
   { icon: FiMail,     label: 'Email',             url: 'mailto:edher.diaz21@gmail.com' },
 ];
 
-const EMAILJS_SERVICE  = 'service_qc30ksk';
+const EMAILJS_SERVICE  = 'service_nf25nt9';
 const EMAILJS_TEMPLATE = 'template_jd1ol8d';
 const EMAILJS_USER     = 'NVZ4Wky133jfv3F-4';
 
