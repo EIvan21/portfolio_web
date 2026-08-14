@@ -42,6 +42,9 @@ hosting) using the Hostinger MCP. Follow these steps in order.
    Confirm the live `main.<hash>.js` matches the hash from step 1. Report the
    result to the user and remind them to hard-refresh (Ctrl+F5) or use incognito.
 
+6. **Stop the local dev server.** Once development and deploy are done, shut down
+   the running `npm start` dev server (free port 3000) — don't leave it running.
+
 ## Reference
 
 - Hosting username: `u487664195`

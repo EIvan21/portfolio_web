@@ -43,6 +43,8 @@ Use the **`/deploy`** skill, or follow these steps manually:
 4. Clear cache: `hosting_clearWebsiteCacheV1(domain="edherivan.com", username="u487664195")`
 5. Verify: list `static/js` on the site and confirm the new `main.<hash>.js`
    matches the hash printed by the build.
+6. When development and deploy are done, stop the local `npm start` dev server
+   (free port 3000) — don't leave it running.
 
 ### Gotchas
 
