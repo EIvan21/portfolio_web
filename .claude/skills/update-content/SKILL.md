@@ -88,6 +88,7 @@ adding a separate group so the framing still fits — ask the user.
 
 ## Keeping the site in sync with the CV
 
-The résumé PDF lives at `public/Edher_Ivan_CV.pdf` (linked from `Hero.jsx` as
-"Download CV"). When updating experience/certs to match a new CV, remember to also
-replace that PDF (keep the same filename) so the download stays in sync.
+Two résumé PDFs live in `public/`: `Edher_Ivan_Diaz_CV_EN.pdf` (linked from
+`Hero.jsx` as "Download CV") and `Edher_Ivan_Diaz_CV_ES.pdf` (the small "CV en
+español" link). When updating experience/certs to match a new CV, replace the
+matching PDF (keep the same filename) so the downloads stay in sync.
