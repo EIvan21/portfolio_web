@@ -64,8 +64,9 @@ export default function AiVideo() {
         <div>
           <h2 className="ai-video__title">AI video lab</h2>
           <p className="ai-video__sub">
-            Short-form video produced end to end with generative AI — concept,
-            art direction, motion and sound — published as an ongoing series.
+            Short-form video shipped end to end by a crew of AI agents —
+            concept, script, art direction, sound and review — looping until
+            the cut works.
           </p>
         </div>
         <a

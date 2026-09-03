@@ -79,8 +79,14 @@
   overflow: hidden;
 }
 
+/* TikTok reports an iframe height taller than the carousel's own content,
+   which leaves dead space we cannot reach into (cross-origin). Crop it from
+   the outside; --embed-h is the only value to tune if their layout changes. */
 .ai-video__slot {
+  --embed-h: 470px;
   min-height: 320px;
+  max-height: var(--embed-h);
+  overflow: hidden;
 }
 
 /* TikTok injects its iframe here; keep it from overflowing the card. */
@@ -112,5 +118,8 @@
 
 @media (max-width: 760px) {
   .ai-video__frame { padding: 0.75rem; }
-  .ai-video__slot  { min-height: 280px; }
+  .ai-video__slot  {
+    --embed-h: 300px;
+    min-height: 250px;
+  }
 }
