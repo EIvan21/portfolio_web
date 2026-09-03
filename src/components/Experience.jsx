@@ -9,21 +9,21 @@ const JOBS = [
     current: true,
     stack: ['LLM agents', 'LookML', 'BigQuery', 'Python', 'Looker'],
     bullets: [
-      'Engineered custom AI integrations and prompt frameworks for leading LLM agents (Gemini, Claude Code, Codex, Cursor), automating LookML code generation to accelerate development workflows and deploy advanced dashboard navigation features.',
-      'Developed and implemented a methodology for building and maintaining projects using LookML, Python and BigQuery, reducing development time by 30%.',
-      'Developed a Python and BigQuery-based methodology to generate synthetic data, enhancing dashboard development and customization while reducing data creation time by 40%.',
-      'Led customer meetings to define key metrics, drill-downs, visualizations and communication channels for marketing dashboards.',
+      'Engineered LLM-agent integrations and prompt frameworks (Gemini, Claude Code, Codex, Cursor) that generate and refactor LookML automatically, accelerating dashboard delivery.',
+      'Designed a LookML/Python/BigQuery methodology adopted across projects, cutting development time 30%.',
+      'Built a Python/BigQuery synthetic data generator for dashboard builds and demos, cutting data creation time 40%.',
+      'Led client workshops to define KPIs, drill-downs, and visualizations for marketing dashboards shipped to production.',
     ],
   },
   {
-    role: 'Looker Consultant Analyst',
+    role: 'Looker Consultant',
     company: 'GTEC',
     period: 'Dec 2023 — Aug 2024',
-    stack: ['Python', 'BigQuery', 'Looker', 'DataFlow'],
+    stack: ['Python', 'BigQuery', 'Looker', 'Dataflow'],
     bullets: [
-      'Implemented a forecast model for inventory management, reducing overstock by 30%.',
-      'Led data visualization, ingestion and KPI analysis for business insights using Python, BigQuery, Looker and DataFlow.',
-      'Developed and maintained data models for predictive analytics and dashboard performance improvements.',
+      'Implemented an inventory forecast model that reduced overstock by 30%.',
+      'Owned data ingestion, visualization, and KPI analysis with Python, BigQuery, Dataflow, and Looker.',
+      'Developed and maintained data models for predictive analytics, improving dashboard performance.',
     ],
   },
   {
@@ -32,9 +32,9 @@ const JOBS = [
     period: 'Dec 2021 — Dec 2023',
     stack: ['Looker', 'PostgreSQL', 'MySQL'],
     bullets: [
-      'Resolved 400+ data analytics cases, improving customer satisfaction to an average of 4.5/5.',
-      'Spearheaded data governance policies across multiple Looker instances, ensuring compliance and data quality.',
-      'Designed dashboards and optimized database connections for PostgreSQL, MySQL and other databases.',
+      'Resolved 400+ data analytics cases for Looker customers, raising average customer satisfaction to 4.5/5.',
+      'Implemented data governance policies across multiple Looker instances, ensuring compliance and data quality.',
+      'Designed customer dashboards and optimized Looker connections to PostgreSQL, MySQL, and other databases.',
     ],
   },
 ];

@@ -34,7 +34,7 @@ export default function Contact() {
       <p className="section-label">Contact</p>
       <h2 className="contact__title">Let's work together</h2>
       <p className="contact__sub">
-        Open to data and cloud projects.{' '}
+        Open to Analytics Engineering roles and Looker / BigQuery projects.{' '}
         <a href="mailto:edher.diaz21@gmail.com">edher.diaz21@gmail.com</a>
       </p>
 

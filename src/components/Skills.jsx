@@ -2,41 +2,48 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Skills.css';
 
 const STACK = [
-  { label: 'Python',       group: 'prog' },
-  { label: 'SQL',          group: 'prog' },
-  { label: 'LookML',       group: 'prog' },
-  { label: 'FastAPI',      group: 'prog' },
-  { label: 'React',        group: 'prog' },
-  { label: 'JavaScript',   group: 'prog' },
-  { label: 'BigQuery',     group: 'cloud' },
-  { label: 'DataFlow',     group: 'cloud' },
-  { label: 'VertexAI',     group: 'cloud' },
-  { label: 'Cloud Storage',group: 'cloud' },
-  { label: 'Looker Studio',group: 'cloud' },
-  { label: 'PySpark',      group: 'data' },
-  { label: 'Pandas',       group: 'data' },
-  { label: 'NumPy',        group: 'data' },
-  { label: 'Scikit-learn', group: 'data' },
-  { label: 'Git',          group: 'tools' },
-  { label: 'Jupyter',      group: 'tools' },
+  // BI & Analytics
+  { label: 'Looker',                            group: 'bi' },
+  { label: 'LookML',                            group: 'bi' },
+  { label: 'Looker Studio',                     group: 'bi' },
+  { label: 'Semantic & dimensional modeling',   group: 'bi' },
+  { label: 'Dashboard design',                  group: 'bi' },
+  // Data & Cloud
+  { label: 'BigQuery',                          group: 'cloud' },
+  { label: 'SQL',                               group: 'cloud' },
+  { label: 'Python',                            group: 'cloud' },
+  { label: 'Dataflow',                          group: 'cloud' },
+  { label: 'PySpark',                           group: 'cloud' },
+  { label: 'Vertex AI',                         group: 'cloud' },
+  { label: 'Cloud Storage',                     group: 'cloud' },
+  // Data Science
+  { label: 'pandas',                            group: 'data' },
+  { label: 'NumPy',                             group: 'data' },
+  { label: 'scikit-learn',                      group: 'data' },
+  { label: 'Matplotlib',                        group: 'data' },
+  { label: 'Forecasting',                       group: 'data' },
+  { label: 'BigQuery ML',                       group: 'data' },
+  // AI & Tooling
+  { label: 'LLM agents',                        group: 'tools' },
+  { label: 'Prompt engineering',                group: 'tools' },
+  { label: 'Git',                               group: 'tools' },
+  { label: 'Jupyter',                           group: 'tools' },
+  { label: 'FastAPI',                           group: 'tools' },
 ];
 
 const CERTS = [
   {
     name: 'Associate Cloud Engineer',
     org: 'Google Cloud · 2026',
-    desc: 'Established and configured foundational Google Cloud environments — planning, deploying and securing a variety of cloud solutions.',
   },
   {
     name: 'Generative AI Leader',
     org: 'Google Cloud · 2025',
     ai: true,
-    desc: "Applied business-level knowledge of Google Cloud's Gen AI offerings to identify transformation opportunities and guide responsible AI adoption.",
   },
   {
     name: 'Data Engineer',
     org: 'DataCamp · 2025',
-    desc: 'Proven expertise in SQL and data management — data cleaning and transformation, assessed through real-world engineering challenges.',
   },
 ];
 
@@ -76,7 +83,6 @@ export default function Skills() {
                   <span className="cert-card__org-name">{org}</span>
                   {year && <span className="cert-card__year">{year}</span>}
                 </p>
-                <p className="cert-card__desc">{c.desc}</p>
               </div>
             );
           })}

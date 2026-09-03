@@ -104,12 +104,6 @@
   color: var(--text-muted);
 }
 
-.cert-card__desc {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  line-height: 1.55;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .skill-chip,
   .skills.visible .skill-chip,

@@ -6,20 +6,20 @@ const EDUCATION = [
     degree: 'MSc in Applied Artificial Intelligence',
     school: 'Tecnológico de Monterrey',
     period: 'In progress',
+    detail: '2026 — Present · expected 2028',
     ai: true,
-    note: 'Building advanced competencies in applied AI and emerging technologies to drive innovation and lead strategic organizational transformation.',
   },
   {
     degree: 'Diploma in Data Science',
     school: 'Skills Tech · Mexico',
     period: '2022 — 2023',
-    note: 'Capstone project: analysis and prediction of energy prices in the Mexican Wholesale Electricity Market. Focus on Python, SQL, Data Governance and the Kimball methodology.',
+    note: "Capstone: electricity price forecasting for Mexico's wholesale market with Python and SQL; Kimball methodology and data governance.",
   },
   {
     degree: 'BSc in Energy Engineering',
     school: 'Universidad Autónoma Metropolitana',
     period: '2016 — 2021',
-    note: 'Awarded the University Merit Medal for academic excellence and the top-ranking GPA in the graduating class.',
+    note: 'University Merit Medal for the top GPA of the graduating class.',
   },
 ];
 
@@ -45,7 +45,8 @@ export default function Education() {
               )}
             </div>
             <p className="edu__school">{e.school}</p>
-            <p className="edu__note">{e.note}</p>
+            {e.detail && <p className="edu__detail">{e.detail}</p>}
+            {e.note && <p className="edu__note">{e.note}</p>}
           </article>
         ))}
       </div>

@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import './Hero.css';
 
 const ROLES = [
-  'Data & Cloud Engineer',
-  'BigQuery · LookML · Python',
-  'Google Cloud Specialist',
-  'AI Analytics Developer',
+  'Analytics Engineer',
+  'Looker & LookML specialist',
+  'BigQuery on Google Cloud',
 ];
 
 const PIPELINE = [
@@ -74,21 +73,26 @@ export default function Hero() {
           </div>
 
           <p className="hero__bio">
-            Data &amp; Cloud Engineer specialized in BigQuery, PySpark and LookML.
-            I optimize data pipelines, automate workflows and build high-impact
-            analytics dashboards on Google Cloud.
+            Analytics Engineer specialized in Looker, LookML and BigQuery on
+            Google Cloud. I design semantic models, automate LookML development
+            with LLM agents, and build analytics dashboards that teams actually
+            use.
           </p>
 
           <div className="hero__actions">
             <a href="#projects" className="btn-primary">View projects →</a>
-            <a href="/Edher_Ivan_CV.pdf" download className="btn-outline">
+            <a href="/Edher_Ivan_Diaz_CV_EN.pdf" download className="btn-outline">
               Download CV
             </a>
           </div>
 
+          <p className="hero__cv-alt">
+            <a href="/Edher_Ivan_Diaz_CV_ES.pdf" download>CV en español</a>
+          </p>
+
           <div className="hero__stats">
             <div className="hero__stat">
-              <span className="hero__stat-num">5+</span>
+              <span className="hero__stat-num">4+</span>
               <span className="hero__stat-label">years experience</span>
             </div>
             <div className="hero__stat">
