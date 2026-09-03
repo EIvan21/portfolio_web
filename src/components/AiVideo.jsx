@@ -6,7 +6,7 @@ const HANDLE = 'eivan7678';
 const PROFILE = `https://www.tiktok.com/@${HANDLE}`;
 
 // Toolchain shown as chips — edit freely, these are the ones behind the videos.
-const TOOLS = ['Veo', 'Kling', 'Midjourney', 'ElevenLabs'];
+const TOOLS = ['Nano Banana Pro', 'Seedance', 'Veo', 'Kling'];
 
 // Creator Profile Embed: TikTok resolves the most recent videos from the
 // handle, so the carousel stays current without a redeploy.
