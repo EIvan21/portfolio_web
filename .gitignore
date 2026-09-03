@@ -11,6 +11,13 @@
 # production
 /build
 
+# deploy artifacts
+portfolio-build.zip
+portfolio-build.tar.gz
+
+# local Claude Code settings
+.claude/settings.local.json
+
 # misc
 .DS_Store
 .env.local

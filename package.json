@@ -16,6 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy:pack": "react-scripts build && tar -czf portfolio-build.tar.gz -C build .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

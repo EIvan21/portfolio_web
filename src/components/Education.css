@@ -9,11 +9,35 @@
   border: 0.5px solid var(--border);
   border-radius: var(--radius);
   padding: 1.2rem;
-  transition: border-color 0.2s;
+  opacity: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Staggered entrance */
+@keyframes eduIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.education.visible .edu__card {
+  animation: eduIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.education.visible .edu__card:nth-child(1) { animation-delay: 0.06s; }
+.education.visible .edu__card:nth-child(2) { animation-delay: 0.15s; }
+.education.visible .edu__card:nth-child(3) { animation-delay: 0.24s; }
 
 .edu__card:hover {
   border-color: var(--accent);
+  box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.35);
+}
+
+/* AI degree — violet accent, ties to the AI identity */
+.edu__card--ai {
+  box-shadow: inset 3px 0 0 var(--ai);
+}
+.edu__card--ai:hover {
+  border-color: var(--ai);
+  box-shadow: inset 3px 0 0 var(--ai), 0 12px 28px -12px var(--ai-light);
 }
 
 .edu__head {
@@ -32,10 +56,40 @@
 }
 
 .edu__period {
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--text-muted);
   white-space: nowrap;
+}
+
+/* Live "In progress" badge */
+.edu__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--ai-light);
+  color: var(--ai-deep);
+  white-space: nowrap;
+}
+
+.edu__badge::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ai);
+  animation: edu-pulse 2s ease-in-out infinite;
+}
+
+@keyframes edu-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
 }
 
 .edu__school {
@@ -44,8 +98,24 @@
   margin: 4px 0 8px;
 }
 
+.edu__detail {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
 .edu__note {
   font-size: 12.5px;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edu__card,
+  .education.visible .edu__card {
+    opacity: 1;
+    animation: none;
+  }
+  .edu__badge::before { animation: none; }
 }

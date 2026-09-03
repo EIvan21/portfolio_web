@@ -26,7 +26,7 @@ function App() {
         color: 'var(--text-muted)',
         borderTop: '0.5px solid var(--border)'
       }}>
-        Edher Ivan · {new Date().getFullYear()} ·{' '}
+        Edher Iván Díaz Salazar · {new Date().getFullYear()} ·{' '}
         <a href="https://github.com/EIvan21" target="_blank" rel="noreferrer"
            style={{ color: 'var(--accent)', textDecoration: 'none' }}>
           github.com/EIvan21

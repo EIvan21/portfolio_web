@@ -1,18 +1,37 @@
+import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Projects.css';
 
+const VISIBLE = 4;
+
 const PROJECTS = [
+  {
+    tag: 'AI',
+    name: 'Looker Architect',
+    desc: 'AI agent skill that designs and scaffolds clean, well-structured LookML projects.',
+    url: 'https://github.com/looker-open-source/looker-skills/tree/main/skills/looker-architect',
+    author: true,
+    ai: true,
+  },
+  {
+    tag: 'AI',
+    name: 'Looker Performance Optimizer',
+    desc: 'AI agent skill that generates and refactors LookML for performance.',
+    url: 'https://github.com/looker-open-source/looker-skills/tree/main/skills/looker-performance-optimizer',
+    author: true,
+    ai: true,
+  },
   {
     tag: 'LookML',
     name: 'Agent Analytics Block',
-    desc: 'Looker block to monitor, debug and optimize generative AI agents on top of BigQuery Agent Analytics. Built with Native Derived Tables, Liquid templating and advanced visual drilling.',
+    desc: 'Looker block to monitor and optimize GenAI agents on BigQuery Agent Analytics, built with Native Derived Tables, Liquid templating, and advanced drilling.',
     url: 'https://github.com/looker-open-source/agent-analytics-block',
     author: true,
   },
   {
     tag: 'LookML',
     name: 'GA Four Block',
-    desc: 'Looker block for Google Analytics 4: incremental sessionization in BigQuery, BQML propensity models and dashboards for acquisition, behavior and cohorts.',
+    desc: 'Google Analytics 4 block with incremental sessionization in BigQuery, BigQuery ML propensity models, and acquisition, behavior, and cohort dashboards.',
     url: 'https://github.com/looker-open-source/ga_four_block',
     author: false,
   },
@@ -34,6 +53,10 @@ const PROJECTS = [
 
 export default function Projects() {
   const ref = useScrollReveal();
+  const [expanded, setExpanded] = useState(false);
+
+  const shown = expanded ? PROJECTS : PROJECTS.slice(0, VISIBLE);
+  const hiddenCount = PROJECTS.length - VISIBLE;
 
   return (
     <section className="projects section fade-up" ref={ref} id="projects">
@@ -54,18 +77,18 @@ export default function Projects() {
       </div>
 
       <div className="projects__grid">
-        {PROJECTS.map((p) => (
+        {shown.map((p) => (
           <a
             key={p.name}
             href={p.url}
             target="_blank"
             rel="noreferrer"
-            className={`project-card ${p.author ? 'project-card--featured' : ''}`}
+            className={`project-card ${p.ai ? 'project-card--ai' : p.author ? 'project-card--featured' : ''}`}
           >
             <div className="project-card__top">
-              <span className="project-card__tag">{p.tag}</span>
+              <span className={`project-card__tag ${p.ai ? 'project-card__tag--ai' : ''}`}>{p.tag}</span>
               {p.author && (
-                <span className="project-card__badge">Lead author</span>
+                <span className={`project-card__badge ${p.ai ? 'project-card__badge--ai' : ''}`}>Lead author</span>
               )}
             </div>
             <p className="project-card__name">{p.name}</p>
@@ -74,6 +97,18 @@ export default function Projects() {
           </a>
         ))}
       </div>
+
+      {hiddenCount > 0 && (
+        <div className="projects__more">
+          <button
+            type="button"
+            className="projects__more-btn"
+            onClick={() => setExpanded((e) => !e)}
+          >
+            {expanded ? 'Show less' : 'Show more'}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
