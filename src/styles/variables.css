@@ -71,6 +71,9 @@ body {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
+  /* The navbar is sticky, so an anchor jump would land the section label
+     underneath it. Clear its height plus a little air. */
+  scroll-margin-top: 72px;
 }
 
 .section-label {

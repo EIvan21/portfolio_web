@@ -4,6 +4,7 @@ import './Navbar.css';
 
 const LINKS = [
   { id: 'about',      label: 'About' },
+  { id: 'ai-video',   label: 'AI Video' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects',   label: 'Projects' },
   { id: 'contact',    label: 'Contact' },

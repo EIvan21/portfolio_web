@@ -1,0 +1,119 @@
+/* Violet accent throughout — this is the AI track, same language as the
+   AI project cards and the "AI agents" pipeline node. */
+.ai-video__label {
+  color: var(--ai);
+}
+
+.ai-video__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1.1rem;
+}
+
+.ai-video__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.ai-video__sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.ai-video__profile {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ai-deep);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.ai-video__profile:hover {
+  opacity: 0.75;
+}
+
+.ai-video__profile:focus-visible {
+  outline: 2px solid var(--ai);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Toolchain chips — mono, echoing the Skills section */
+.ai-video__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+}
+
+.ai-video__tool {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--ai-light);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+}
+
+/* Frame around the embed — the part of the look we actually control,
+   since the carousel itself lives in a cross-origin iframe. */
+.ai-video__frame {
+  position: relative;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-left: 2px solid var(--ai);
+  border-radius: var(--radius);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* Let TikTok's iframe report its own height — the carousel needs the room
+   once the covers load. min-height only keeps the card from collapsing
+   while the embed is still fetching. */
+.ai-video__slot {
+  min-height: 320px;
+}
+
+/* TikTok injects its iframe here; keep it from overflowing the card. */
+.ai-video__slot iframe {
+  max-width: 100%;
+}
+
+.ai-video__placeholder {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Fallback shown when embed.js is blocked or fails: the anchor inside the
+   blockquote is all that survives, so make it read as a deliberate link. */
+.ai-video__slot .tiktok-embed section a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ai-deep);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--border);
+}
+
+@media (max-width: 760px) {
+  .ai-video__frame { padding: 0.75rem; }
+  .ai-video__slot  { min-height: 280px; }
+}
