@@ -64,7 +64,9 @@ export default function Projects() {
         <div>
           <p className="section-label">Projects</p>
           <h2 className="projects__title">Looker Open Source</h2>
-          <p className="projects__sub">30+ blocks · github.com/looker-open-source</p>
+          <p className="projects__sub">
+            40 repos contributed · 3 as lead author
+          </p>
         </div>
         <a
           href="https://github.com/heyedher"
@@ -72,7 +74,7 @@ export default function Projects() {
           rel="noreferrer"
           className="projects__profile-link"
         >
-          View profile →
+          @heyedher on GitHub →
         </a>
       </div>
 

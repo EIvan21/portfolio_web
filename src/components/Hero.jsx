@@ -15,6 +15,15 @@ const PIPELINE = [
   { name: 'Looker',    meta: 'dashboards' },
 ];
 
+// Counts verified against the GitHub API for @heyedher (merged PRs in the
+// looker-open-source org). The labels say "contributed" and "upstream" on
+// purpose: these are Google's repos, not personal ones.
+const STATS = [
+  { num: '4+', label: 'years experience' },
+  { num: '40', label: 'Looker blocks contributed' },
+  { num: '61', label: 'PRs merged upstream' },
+];
+
 const prefersReduced = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -91,18 +100,12 @@ export default function Hero() {
           </p>
 
           <div className="hero__stats">
-            <div className="hero__stat">
-              <span className="hero__stat-num">4+</span>
-              <span className="hero__stat-label">years experience</span>
-            </div>
-            <div className="hero__stat">
-              <span className="hero__stat-num">30+</span>
-              <span className="hero__stat-label">open-source blocks</span>
-            </div>
-            <div className="hero__stat">
-              <span className="hero__stat-num">45</span>
-              <span className="hero__stat-label">merged PRs</span>
-            </div>
+            {STATS.map((s) => (
+              <div className="hero__stat" key={s.label}>
+                <span className="hero__stat-num">{s.num}</span>
+                <span className="hero__stat-label">{s.label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
