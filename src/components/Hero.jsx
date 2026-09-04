@@ -19,7 +19,7 @@ const PIPELINE = [
 // looker-open-source org). The labels say "contributed" and "upstream" on
 // purpose: these are Google's repos, not personal ones.
 const STATS = [
-  { num: '4+', label: 'years experience' },
+  { num: '5+', label: 'years experience' },
   { num: '40', label: 'Looker blocks contributed' },
   { num: '61', label: 'PRs merged upstream' },
 ];

@@ -65,7 +65,7 @@ export default function Projects() {
           <p className="section-label">Projects</p>
           <h2 className="projects__title">Looker Open Source</h2>
           <p className="projects__sub">
-            40 repos contributed · 3 as lead author
+            40 repos contributed · lead author on several
           </p>
         </div>
         <a
