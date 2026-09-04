@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import { FiLinkedin, FiGithub, FiMail } from 'react-icons/fi';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Contact.css';
@@ -13,7 +13,7 @@ const SOCIALS = [
 
 const EMAILJS_SERVICE  = 'service_nf25nt9';
 const EMAILJS_TEMPLATE = 'template_jd1ol8d';
-const EMAILJS_USER     = 'NVZ4Wky133jfv3F-4';
+const EMAILJS_PUBLIC_KEY = 'NVZ4Wky133jfv3F-4';
 
 export default function Contact() {
   const ref    = useScrollReveal();
@@ -24,7 +24,9 @@ export default function Contact() {
     e.preventDefault();
     setStatus('sending');
     emailjs
-      .sendForm(EMAILJS_SERVICE, EMAILJS_TEMPLATE, formEl.current, EMAILJS_USER)
+      .sendForm(EMAILJS_SERVICE, EMAILJS_TEMPLATE, formEl.current, {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      })
       .then(() => { setStatus('ok');    formEl.current.reset(); })
       .catch(() => { setStatus('error'); });
   };
