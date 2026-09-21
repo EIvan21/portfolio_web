@@ -16,7 +16,7 @@ const SUGGESTIONS = [
   'Tell me about his most challenging project',
   'I have a job description — how well does he fit?',
   'Does he have experience with Kubernetes?',
-  'How is this agent built?',
+  'What kind of role is he looking for?',
 ];
 
 const IS_DEV = process.env.NODE_ENV === 'development';
