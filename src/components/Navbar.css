@@ -34,6 +34,7 @@
 }
 
 .navbar__links a {
+  white-space: nowrap;
   font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
@@ -81,13 +82,28 @@
   color: var(--accent) !important;
 }
 
+/* Long labels have a short twin for phones */
+.navbar__label-short { display: none; }
+
 @media (max-width: 600px) {
+  .navbar__label-full  { display: none; }
+  .navbar__label-short { display: inline; }
   .navbar { padding: 0.75rem 1rem; }
   .navbar__links { gap: 14px; }
   .navbar__links a { font-size: 12px; }
   .navbar__github { display: none; }
 }
 
-@media (max-width: 380px) {
+/* Narrow phones: "About" is the top of the page, which the logo already
+   stands for, so it is the one link that can go. */
+@media (max-width: 400px) {
   .navbar__links { gap: 11px; }
+  .navbar__links a[href="#about"] { display: none; }
+}
+
+/* Measured: the 400px layout needs 356px. Below that, tighten once more;
+   this fits down to 324px. */
+@media (max-width: 359px) {
+  .navbar__links { gap: 8px; }
+  .navbar__links a { font-size: 11px; }
 }

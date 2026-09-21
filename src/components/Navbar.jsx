@@ -4,7 +4,9 @@ import './Navbar.css';
 
 const LINKS = [
   { id: 'about',      label: 'About' },
-  { id: 'ai-video',   label: 'AI Video' },
+  // `short` is what phones show: six full labels do not fit one line there.
+  { id: 'ask',        label: 'Ask my CV', short: 'Ask' },
+  { id: 'ai-video',   label: 'AI Video',  short: 'Video' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects',   label: 'Projects' },
   { id: 'contact',    label: 'Contact' },
@@ -68,8 +70,14 @@ export default function Navbar() {
             key={l.id}
             href={`#${l.id}`}
             className={active === l.id ? 'active' : undefined}
+            aria-label={l.short ? l.label : undefined}
           >
-            {l.label}
+            {l.short ? (
+              <>
+                <span className="navbar__label-full">{l.label}</span>
+                <span className="navbar__label-short">{l.short}</span>
+              </>
+            ) : l.label}
           </a>
         ))}
         <a
