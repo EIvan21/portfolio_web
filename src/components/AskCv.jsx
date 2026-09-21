@@ -9,13 +9,14 @@ const ENDPOINT = '/api/chat.php';
 const MAX_USER_TURNS = 10;
 const MAX_CHARS = 6000;
 
-// Each one shows a different side of the agent. The Kubernetes one is on
-// purpose: it shows the agent saying "that's not in the CV" instead of bluffing.
+// Each one opens onto a strength. The agent still answers honestly when asked
+// about something that is not in the CV -- the page just does not hand out
+// that question ready-made.
 const SUGGESTIONS = [
   'What is his experience with LLM agents?',
+  'What has he built with Looker and BigQuery?',
   'Tell me about his most challenging project',
   'I have a job description — how well does he fit?',
-  'Does he have experience with Kubernetes?',
   'What kind of role is he looking for?',
 ];
 
