@@ -30,6 +30,15 @@ function fail(int $status, string $code, string $message): void
     exit;
 }
 
+// display_errors is off on the host, so an uncaught error would be a blank
+// 500 the page cannot explain. Turn it into the same JSON shape as any other
+// failure -- without the detail, which is not the visitor's business.
+set_exception_handler(static function (Throwable $e): void {
+    if (!headers_sent()) {
+        fail(500, 'internal_error', 'The assistant hit an internal error. Try again later.');
+    }
+});
+
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     header('Allow: POST');
     fail(405, 'method_not_allowed', 'Use POST.');
@@ -169,7 +178,9 @@ if (random_int(1, 50) === 1) {
 while (ob_get_level() > 0) {
     ob_end_flush();
 }
-ob_implicit_flush(true);
+// No argument on purpose: the parameter is an int in PHP 7 and a bool in
+// PHP 8, and under strict_types the wrong one is a fatal TypeError.
+ob_implicit_flush();
 
 $status = 0;
 $started = false;
