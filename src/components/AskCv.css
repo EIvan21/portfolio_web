@@ -1,0 +1,286 @@
+/* Violet throughout — the AI track, same language as the AI project cards,
+   the "AI agents" pipeline node and the video lab. */
+.ask-cv__label {
+  color: var(--ai);
+}
+
+.ask-cv__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1.1rem;
+}
+
+.ask-cv__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.ask-cv__sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.ask-cv__reset {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ai-deep);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.ask-cv__reset:hover {
+  opacity: 0.75;
+}
+
+/* Panel */
+.ask-cv__panel {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-left: 2px solid var(--ai);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.ask-cv__log {
+  min-height: 120px;
+  max-height: 420px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0.9rem;
+  /* The log scrolls on its own; reaching its end must not drag the page. */
+  overscroll-behavior: contain;
+}
+
+/* Suggestions — the empty state */
+.ask-cv__suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+}
+
+.ask-cv__chip {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-align: left;
+  color: var(--text);
+  background: var(--ai-light);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 7px 11px;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.ask-cv__chip:hover:not(:disabled) {
+  border-color: var(--ai);
+  transform: translateY(-1px);
+}
+
+.ask-cv__chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Messages */
+.ask-cv__msg {
+  max-width: 88%;
+  font-size: 13px;
+  line-height: 1.7;
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  overflow-wrap: anywhere;
+}
+
+.ask-cv__msg--user {
+  align-self: flex-end;
+  color: var(--text);
+  background: var(--ai-light);
+  border: 0.5px solid var(--border);
+  white-space: pre-wrap;
+}
+
+.ask-cv__msg--assistant {
+  align-self: flex-start;
+  color: var(--text);
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+}
+
+.ask-cv__msg p + p,
+.ask-cv__msg p + ul,
+.ask-cv__msg ul + p {
+  margin-top: 0.55em;
+}
+
+.ask-cv__msg ul {
+  padding-left: 1.15em;
+}
+
+.ask-cv__msg li + li {
+  margin-top: 0.25em;
+}
+
+.ask-cv__msg strong {
+  color: var(--ai-deep);
+  font-weight: 600;
+}
+
+.ask-cv__msg code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--ai-light);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* Thinking dots */
+.ask-cv__thinking {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.ask-cv__thinking span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ai);
+  animation: askPulse 1.1s ease-in-out infinite;
+}
+
+.ask-cv__thinking span:nth-child(2) { animation-delay: 0.15s; }
+.ask-cv__thinking span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes askPulse {
+  0%, 80%, 100% { opacity: 0.25; }
+  40%           { opacity: 1; }
+}
+
+/* Input */
+.ask-cv__form {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.ask-cv__form textarea {
+  flex: 1;
+  min-width: 0;
+  resize: vertical;
+  min-height: 44px;
+  max-height: 200px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.ask-cv__form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.ask-cv__form textarea:focus {
+  outline: none;
+  border-color: var(--ai);
+  box-shadow: 0 0 0 3px var(--ai-light);
+}
+
+.ask-cv__send {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--ai);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+/* Dark mode lightens --ai; white text on it would lose contrast. */
+[data-theme='dark'] .ask-cv__send {
+  color: #14102b;
+}
+
+.ask-cv__send:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.ask-cv__send:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ask-cv__chip:focus-visible,
+.ask-cv__send:focus-visible,
+.ask-cv__reset:focus-visible,
+.ask-cv__limit button:focus-visible {
+  outline: 2px solid var(--ai);
+  outline-offset: 3px;
+}
+
+/* Status lines */
+.ask-cv__error {
+  font-size: 12px;
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-bottom: 0.75rem;
+}
+
+.ask-cv__limit {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.ask-cv__limit button {
+  font: inherit;
+  color: var(--ai-deep);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ask-cv__note {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 0.7rem;
+}
+
+@media (max-width: 760px) {
+  .ask-cv__panel { padding: 0.75rem; }
+  .ask-cv__msg   { max-width: 94%; }
+  .ask-cv__form  { flex-direction: column; align-items: stretch; }
+  .ask-cv__log   { max-height: 360px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ask-cv__thinking span { animation: none; opacity: 0.7; }
+  .ask-cv__chip:hover:not(:disabled) { transform: none; }
+}

@@ -1,6 +1,7 @@
 import './styles/variables.css';
 import Navbar     from './components/Navbar';
 import Hero       from './components/Hero';
+import AskCv      from './components/AskCv';
 import AiVideo    from './components/AiVideo';
 import Experience from './components/Experience';
 import Projects   from './components/Projects';
@@ -14,6 +15,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <AskCv />
         <AiVideo />
         <Experience />
         <Projects />
