@@ -28,23 +28,36 @@
   max-width: 480px;
 }
 
-.ai-video__profile {
+.ai-video__channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Platform pills — same shape as the navbar's GitHub pill */
+.ai-video__channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--ai-deep);
+  color: var(--text);
   text-decoration: none;
   white-space: nowrap;
-  transition: opacity 0.15s;
+  padding: 5px 11px;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s, color 0.15s;
 }
 
-.ai-video__profile:hover {
-  opacity: 0.75;
+.ai-video__channel:hover {
+  border-color: var(--ai);
+  color: var(--ai-deep);
 }
 
-.ai-video__profile:focus-visible {
+.ai-video__channel:focus-visible {
   outline: 2px solid var(--ai);
   outline-offset: 3px;
-  border-radius: 3px;
 }
 
 /* Toolchain chips — mono, echoing the Skills section */
@@ -67,8 +80,7 @@
   padding: 4px 10px;
 }
 
-/* Frame around the embed — the part of the look we actually control,
-   since the carousel itself lives in a cross-origin iframe. */
+/* Frame around the video row */
 .ai-video__frame {
   position: relative;
   background: var(--surface);
@@ -76,22 +88,11 @@
   border-left: 2px solid var(--ai);
   border-radius: var(--radius);
   padding: 1rem;
-  overflow: hidden;
+  min-height: 250px;
 }
 
-/* Let TikTok's iframe report its own height — the carousel needs the room
-   once the covers load. min-height only keeps the card from collapsing
-   while the embed is still fetching. */
-.ai-video__slot {
-  min-height: 320px;
-}
-
-/* TikTok injects its iframe here; keep it from overflowing the card. */
-.ai-video__slot iframe {
-  max-width: 100%;
-}
-
-.ai-video__placeholder {
+.ai-video__placeholder,
+.ai-video__fallback {
   position: absolute;
   inset: 0;
   margin: 0;
@@ -103,17 +104,218 @@
   color: var(--text-muted);
 }
 
-/* Fallback shown when embed.js is blocked or fails: the anchor inside the
-   blockquote is all that survives, so make it read as a deliberate link. */
-.ai-video__slot .tiktok-embed section a {
-  font-family: var(--font-mono);
-  font-size: 13px;
+.ai-video__fallback a {
   color: var(--ai-deep);
   text-decoration: none;
   border-bottom: 1px dashed var(--border);
 }
 
+/* Video row — horizontal, snapping, newest first */
+.ai-video__grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 150px;
+  gap: 10px;
+  list-style: none;
+  padding: 0 0 6px;
+  margin: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ai) transparent;
+}
+
+.ai-video__grid > li {
+  scroll-snap-align: start;
+}
+
+.ai-video__card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  padding: 0;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  /* Shown when a cover fails to load: TikTok signs its thumbnail URLs. */
+  background: linear-gradient(160deg, var(--ai-light), var(--bg));
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.ai-video__card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.ai-video__card:hover {
+  border-color: var(--ai);
+  transform: translateY(-2px);
+}
+
+.ai-video__card:hover img {
+  transform: scale(1.04);
+}
+
+.ai-video__card:focus-visible {
+  outline: 2px solid var(--ai);
+  outline-offset: 3px;
+}
+
+/* Platform mark, top-left of each cover */
+.ai-video__badge {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+/* Play badge */
+.ai-video__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  background: rgba(13, 17, 23, 0.55);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: background 0.2s;
+}
+
+.ai-video__play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 7px 0 7px 11px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.ai-video__card:hover .ai-video__play {
+  background: var(--ai);
+}
+
+/* Caption over a dark fade so it reads on any cover */
+.ai-video__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px 9px 8px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.35;
+  text-align: left;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ai-video__note {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 0.7rem;
+}
+
+/* Player modal */
+.ai-player {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(5, 7, 12, 0.78);
+  backdrop-filter: blur(6px);
+  animation: aiPlayerIn 0.2s ease both;
+}
+
+@keyframes aiPlayerIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ai-player__box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* 9:16, as tall as the screen allows, never wider than it */
+  height: min(82vh, 760px);
+  aspect-ratio: 9 / 16;
+  max-width: 100%;
+}
+
+.ai-player__frame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  border-radius: var(--radius);
+  background: #000;
+}
+
+.ai-player__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.ai-player__bar a {
+  color: #c4b5ff;
+  text-decoration: none;
+}
+
+.ai-player__bar button {
+  font: inherit;
+  color: #fff;
+  background: transparent;
+  border: 0.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.ai-player__bar button:hover,
+.ai-player__bar button:focus-visible {
+  border-color: #c4b5ff;
+  outline: none;
+}
+
 @media (max-width: 760px) {
   .ai-video__frame { padding: 0.75rem; }
-  .ai-video__slot  { min-height: 280px; }
+  .ai-video__grid  { grid-auto-columns: 132px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-video__card,
+  .ai-video__card img { transition: none; }
+  .ai-video__card:hover { transform: none; }
+  .ai-video__card:hover img { transform: none; }
+  .ai-player { animation: none; }
 }
