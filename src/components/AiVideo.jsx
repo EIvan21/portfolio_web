@@ -1,11 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { SiTiktok } from 'react-icons/si';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './AiVideo.css';
 
 const HANDLE = '_brownai_';
 const PROFILE = `https://www.tiktok.com/@${HANDLE}`;
 const ENDPOINT = '/api/tiktok.php';
+
+// Where the videos live. The grid is fed from TikTok; any other platform
+// listed here is a link only.
+const CHANNELS = [
+  { name: 'TikTok', icon: SiTiktok, handle: `@${HANDLE}`, url: PROFILE },
+];
 
 // Toolchain shown as chips — edit freely, these are the ones behind the videos.
 const TOOLS = ['Nano Banana Pro', 'Seedance', 'Veo', 'Kling'];
@@ -159,14 +166,21 @@ export default function AiVideo() {
             the cut works.
           </p>
         </div>
-        <a
-          className="ai-video__profile"
-          href={PROFILE}
-          target="_blank"
-          rel="noreferrer"
-        >
-          @{HANDLE} →
-        </a>
+        <div className="ai-video__channels">
+          {CHANNELS.map(({ name, icon: Icon, handle, url }) => (
+            <a
+              key={name}
+              className="ai-video__channel"
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${handle} on ${name}`}
+            >
+              <Icon size={13} aria-hidden="true" />
+              {handle}
+            </a>
+          ))}
+        </div>
       </div>
 
       <ul className="ai-video__tools">
@@ -194,6 +208,9 @@ export default function AiVideo() {
                       onError={() => setBroken((b) => ({ ...b, [v.id]: true }))}
                     />
                   )}
+                  <span className="ai-video__badge" aria-hidden="true">
+                    <SiTiktok size={11} />
+                  </span>
                   <span className="ai-video__play" aria-hidden="true" />
                   <span className="ai-video__caption">{label(v.title)}</span>
                 </button>
@@ -210,6 +227,12 @@ export default function AiVideo() {
           <p className="ai-video__placeholder">Loading latest videos…</p>
         )}
       </div>
+
+      {status === 'ready' && (
+        <p className="ai-video__note">
+          Latest on TikTok — new videos show up here on their own.
+        </p>
+      )}
 
       {active && <Player video={active} onClose={close} />}
     </section>
