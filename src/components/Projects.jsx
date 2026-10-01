@@ -30,23 +30,37 @@ const PROJECTS = [
   },
   {
     tag: 'LookML',
-    name: 'GA Four Block',
-    desc: 'Google Analytics 4 block with incremental sessionization in BigQuery, BigQuery ML propensity models, and acquisition, behavior, and cohort dashboards.',
-    url: 'https://github.com/looker-open-source/ga_four_block',
-    author: false,
-  },
-  {
-    tag: 'LookML',
     name: 'AlloyDB Observability',
     desc: 'Operational observability suite for AlloyDB: health monitoring, performance, real-time activity and PostgreSQL KPIs with a two-layer refinement architecture.',
     url: 'https://github.com/looker-open-source/alloydb-observability',
-    author: false,
+    author: true,
   },
   {
     tag: 'LookML',
     name: 'Google Trends Block',
     desc: 'Looker block on top of the Google Trends public dataset in BigQuery to explore search interest trends and seasonality.',
     url: 'https://github.com/looker-open-source/google-trends-block',
+    author: true,
+  },
+  {
+    tag: 'LookML',
+    name: 'Chrome UX Report Block',
+    desc: 'Looker block on Chrome UX Report (CrUX) data in BigQuery: dynamic analysis of Core Web Vitals (LCP, INP, CLS) and how real-user experience evolves over time.',
+    url: 'https://github.com/looker-open-source/chrome-ux-looker-block',
+    author: true,
+  },
+  {
+    tag: 'LookML',
+    name: 'Search Console Block',
+    desc: 'Looker block on the Search Console BigQuery Export for in-depth organic search analysis, with an insights dashboard that compares any period against the previous one.',
+    url: 'https://github.com/looker-open-source/search-console-block',
+    author: true,
+  },
+  {
+    tag: 'LookML',
+    name: 'GA Four Block',
+    desc: 'Google Analytics 4 block with incremental sessionization in BigQuery, BigQuery ML propensity models, and acquisition, behavior, and cohort dashboards.',
+    url: 'https://github.com/looker-open-source/ga_four_block',
     author: false,
   },
 ];
@@ -65,7 +79,7 @@ export default function Projects() {
           <p className="section-label">Projects</p>
           <h2 className="projects__title">Looker Open Source</h2>
           <p className="projects__sub">
-            40 repos contributed · lead author on several
+            40 repos contributed · lead author on 7
           </p>
         </div>
         <a
