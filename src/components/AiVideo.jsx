@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { SiTiktok } from 'react-icons/si';
+import { SiInstagram, SiTiktok } from 'react-icons/si';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './AiVideo.css';
 
@@ -8,10 +8,12 @@ const HANDLE = '_brownai_';
 const PROFILE = `https://www.tiktok.com/@${HANDLE}`;
 const ENDPOINT = '/api/tiktok.php';
 
-// Where the videos live. The grid is fed from TikTok; any other platform
-// listed here is a link only.
+// Where the videos live. The grid is fed from TikTok; Instagram carries the
+// same videos, so it is a link only -- reading it would need Meta's Graph API
+// and a token that expires every 60 days, for no new content.
 const CHANNELS = [
-  { name: 'TikTok', icon: SiTiktok, handle: `@${HANDLE}`, url: PROFILE },
+  { name: 'TikTok',    icon: SiTiktok,    handle: `@${HANDLE}`, url: PROFILE },
+  { name: 'Instagram', icon: SiInstagram, handle: `@${HANDLE}`, url: `https://www.instagram.com/${HANDLE}/` },
 ];
 
 // Toolchain shown as chips — edit freely, these are the ones behind the videos.
@@ -230,7 +232,7 @@ export default function AiVideo() {
 
       {status === 'ready' && (
         <p className="ai-video__note">
-          Latest on TikTok — new videos show up here on their own.
+          Latest from TikTok, also on Instagram — new videos show up here on their own.
         </p>
       )}
 
