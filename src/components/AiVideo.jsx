@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './AiVideo.css';
 
-const HANDLE = 'eivan7678';
+const HANDLE = '_brownai_';
 const PROFILE = `https://www.tiktok.com/@${HANDLE}`;
 
 // Toolchain shown as chips — edit freely, these are the ones behind the videos.
